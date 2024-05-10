@@ -11,10 +11,10 @@
 		FD177A592B84F59C00FD37A9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD177A582B84F59C00FD37A9 /* ContentView.swift */; };
 		FD177A5B2B84F5A000FD37A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD177A5A2B84F5A000FD37A9 /* Assets.xcassets */; };
 		FD177A5E2B84F5A000FD37A9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD177A5D2B84F5A000FD37A9 /* Preview Assets.xcassets */; };
-		FD4B98E02BE96BBD0030D4A6 /* SGPKit in Frameworks */ = {isa = PBXBuildFile; productRef = FD4B98DF2BE96BBD0030D4A6 /* SGPKit */; };
 		FD5221192BEDEB0D008B61BD /* AltitudeChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5221182BEDEB0D008B61BD /* AltitudeChart.swift */; };
 		FD52211C2BEDF29A008B61BD /* SpeedChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD52211B2BEDF29A008B61BD /* SpeedChart.swift */; };
-		FDE74D232BEC11D100A45A71 /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = FDE74D222BEC11D100A45A71 /* BottomSheet */; };
+		FDE59FB62BEE9861001BE9A2 /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = FDE59FB52BEE9861001BE9A2 /* BottomSheet */; };
+		FDE59FB92BEE986B001BE9A2 /* SGPKit in Frameworks */ = {isa = PBXBuildFile; productRef = FDE59FB82BEE986B001BE9A2 /* SGPKit */; };
 		FDE74D252BEC331E00A45A71 /* Satellite.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE74D242BEC331E00A45A71 /* Satellite.swift */; };
 		FDE74D272BEC364C00A45A71 /* SatelliteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE74D262BEC364C00A45A71 /* SatelliteList.swift */; };
 		FDE74D292BEC370600A45A71 /* SatelliteRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE74D282BEC370600A45A71 /* SatelliteRow.swift */; };
@@ -42,8 +42,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FD4B98E02BE96BBD0030D4A6 /* SGPKit in Frameworks */,
-				FDE74D232BEC11D100A45A71 /* BottomSheet in Frameworks */,
+				FDE59FB92BEE986B001BE9A2 /* SGPKit in Frameworks */,
+				FDE59FB62BEE9861001BE9A2 /* BottomSheet in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,8 +141,8 @@
 			);
 			name = Voyage;
 			packageProductDependencies = (
-				FD4B98DF2BE96BBD0030D4A6 /* SGPKit */,
-				FDE74D222BEC11D100A45A71 /* BottomSheet */,
+				FDE59FB52BEE9861001BE9A2 /* BottomSheet */,
+				FDE59FB82BEE986B001BE9A2 /* SGPKit */,
 			);
 			productName = Voyage;
 			productReference = FD177A532B84F59C00FD37A9 /* Voyage.app */;
@@ -173,8 +173,8 @@
 			);
 			mainGroup = FD177A4A2B84F59B00FD37A9;
 			packageReferences = (
-				FD4B98DE2BE96BBD0030D4A6 /* XCRemoteSwiftPackageReference "swift-sgp4" */,
-				FDE74D212BEC11D100A45A71 /* XCRemoteSwiftPackageReference "BottomSheet" */,
+				FDE59FB42BEE9861001BE9A2 /* XCRemoteSwiftPackageReference "BottomSheet" */,
+				FDE59FB72BEE986B001BE9A2 /* XCRemoteSwiftPackageReference "swift-sgp4" */,
 			);
 			productRefGroup = FD177A542B84F59C00FD37A9 /* Products */;
 			projectDirPath = "";
@@ -416,15 +416,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		FD4B98DE2BE96BBD0030D4A6 /* XCRemoteSwiftPackageReference "swift-sgp4" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/csanfilippo/swift-sgp4";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.2.0;
-			};
-		};
-		FDE74D212BEC11D100A45A71 /* XCRemoteSwiftPackageReference "BottomSheet" */ = {
+		FDE59FB42BEE9861001BE9A2 /* XCRemoteSwiftPackageReference "BottomSheet" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Wouter125/BottomSheet";
 			requirement = {
@@ -432,18 +424,26 @@
 				minimumVersion = 2.0.2;
 			};
 		};
+		FDE59FB72BEE986B001BE9A2 /* XCRemoteSwiftPackageReference "swift-sgp4" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/csanfilippo/swift-sgp4";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		FD4B98DF2BE96BBD0030D4A6 /* SGPKit */ = {
+		FDE59FB52BEE9861001BE9A2 /* BottomSheet */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = FD4B98DE2BE96BBD0030D4A6 /* XCRemoteSwiftPackageReference "swift-sgp4" */;
-			productName = SGPKit;
-		};
-		FDE74D222BEC11D100A45A71 /* BottomSheet */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FDE74D212BEC11D100A45A71 /* XCRemoteSwiftPackageReference "BottomSheet" */;
+			package = FDE59FB42BEE9861001BE9A2 /* XCRemoteSwiftPackageReference "BottomSheet" */;
 			productName = BottomSheet;
+		};
+		FDE59FB82BEE986B001BE9A2 /* SGPKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FDE59FB72BEE986B001BE9A2 /* XCRemoteSwiftPackageReference "swift-sgp4" */;
+			productName = SGPKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
