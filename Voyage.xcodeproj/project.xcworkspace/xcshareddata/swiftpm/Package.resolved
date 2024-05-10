@@ -1,0 +1,24 @@
+{
+  "originHash" : "b69fad9b89fdfe36bccf9d88eacc99c5cab5baeaf2dac25faa5fc78ad75e5426",
+  "pins" : [
+    {
+      "identity" : "bottomsheet",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Wouter125/BottomSheet",
+      "state" : {
+        "revision" : "ccc7f6ceb2de1dbb132540f73167182dc2c7ec91",
+        "version" : "2.0.2"
+      }
+    },
+    {
+      "identity" : "swift-sgp4",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/csanfilippo/swift-sgp4",
+      "state" : {
+        "revision" : "cbc9a67b1851541d939b0106e003d85c7257ce63",
+        "version" : "1.2.0"
+      }
+    }
+  ],
+  "version" : 3
+}
