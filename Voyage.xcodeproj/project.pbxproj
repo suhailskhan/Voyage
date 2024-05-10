@@ -108,9 +108,9 @@
 		FDE74D2D2BEC38A000A45A71 /* Satellite */ = {
 			isa = PBXGroup;
 			children = (
-				FDE74D2A2BEC384100A45A71 /* SatelliteDetail.swift */,
-				FDE74D282BEC370600A45A71 /* SatelliteRow.swift */,
 				FDE74D262BEC364C00A45A71 /* SatelliteList.swift */,
+				FDE74D282BEC370600A45A71 /* SatelliteRow.swift */,
+				FDE74D2A2BEC384100A45A71 /* SatelliteDetail.swift */,
 			);
 			path = Satellite;
 			sourceTree = "<group>";

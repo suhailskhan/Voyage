@@ -7,20 +7,37 @@ struct SatelliteDetail: View {
     
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 20) {
-                Text(satellite.name).font(.title).bold()
+            VStack() {
+                HStack {
+                    Text("Altitude:")
+                    Spacer()
+                    Text("\(satellite.location.altitude, specifier: "%.0f") km")
+                }
                 
-                Text("TLE Data").font(.headline)
-                Text("Line 1: \(satellite.line1)")
-                Text("Line 2: \(satellite.line2)")
+                Spacer()
                 
                 MapView(coordinate: satellite.location.coordinate)
                     .frame(height: 200)
+                Spacer()
+                
+                HStack {
+                    Text("Speed:")
+                    Spacer()
+                    Text("\(satellite.location.speed, specifier: "%.0f") km/h")
+                }
+                
+                Spacer()
+                
+                HStack(alignment: .bottom) {
+                    Text("Date:")
+                    Spacer()
+                    Text("\(satellite.date, format: .dateTime.year().month().day())")
+                }
             }
             .padding()
+            .navigationTitle(satellite.name)
+            .navigationBarTitleDisplayMode(.large)
         }
-        //        .navigationTitle(satellite.name)
-        .navigationBarTitleDisplayMode(.automatic)
     }
 }
 

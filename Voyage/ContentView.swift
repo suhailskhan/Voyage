@@ -1,6 +1,5 @@
 import SwiftUI
 import MapKit
-import SGPKit
 
 struct ContentView: View {
     @State var region = MapCameraPosition.region(
@@ -22,6 +21,7 @@ struct ContentView: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             Map(position: $region)
+                .mapStyle(.hybrid(elevation: .realistic))
                 .edgesIgnoringSafeArea(.all)
                 .sheet(isPresented: $isPresented) {
                     SatelliteList()
