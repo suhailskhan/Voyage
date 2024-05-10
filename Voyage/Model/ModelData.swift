@@ -10,30 +10,61 @@ struct SatelliteContainer: Decodable {
 
 @Observable
 class ModelData {
-    var satellites: [Satellite] {
-        let satelliteContainer: SatelliteContainer = load("data.json")
-        return satelliteContainer.satellites
+    var satellites: [Satellite] = []
+    var isLoading = false
+    
+    init() {
+        loadSatellites()
+    }
+    
+    func loadSatellites() {
+        self.isLoading = true
+        load(from: "https://tle.ivanstanojevic.me/api/tle/") { (result: Result<SatelliteContainer, Error>) in
+            defer { self.isLoading = false }
+            switch result {
+            case .success(let container):
+                self.satellites = container.satellites
+            case .failure(let error):
+                print("Failed to load satellites:", error)
+            }
+        }
+    }
+    
+    func reloadSatellites() {
+        loadSatellites()
     }
 }
 
-func load<T: Decodable>(_ resource: String) -> T {
-    let data: Data
-    
-    guard let file = Bundle.main.url(forResource: resource, withExtension: nil)
-    else {
-        fatalError("Failed to locate \(resource) in bundle.")
+func load<T: Decodable>(from urlString: String, completion: @escaping (Result<T, Error>) -> Void) {
+    guard let url = URL(string: urlString) else {
+        completion(.failure(NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"])))
+        return
     }
     
-    do {
-        data = try Data(contentsOf: file)
-    } catch {
-        fatalError("Failed to load \(resource) from bundle: \n\(error)")
-    }
-    
-    do {
-        let decoder = JSONDecoder()
-        return try decoder.decode(T.self, from: data)
-    } catch {
-        fatalError("Failed to parse \(resource) as \(T.self):\n\(error)")
-    }
+    URLSession.shared.dataTask(with: url) { data, response, error in
+        if let error = error {
+            DispatchQueue.main.async {
+                completion(.failure(error))
+            }
+            return
+        }
+        
+        guard let data = data else {
+            DispatchQueue.main.async {
+                completion(.failure(NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "No data received"])))
+            }
+            return
+        }
+        
+        do {
+            let decoded = try JSONDecoder().decode(T.self, from: data)
+            DispatchQueue.main.async {
+                completion(.success(decoded))
+            }
+        } catch {
+            DispatchQueue.main.async {
+                completion(.failure(error))
+            }
+        }
+    }.resume()
 }

@@ -2,6 +2,7 @@ import SwiftUI
 
 struct SatelliteList: View {
     @Environment(ModelData.self) var modelData
+    @State private var isLoading = false
     
     var shownSatellites: [Satellite] {
         modelData.satellites
@@ -9,6 +10,7 @@ struct SatelliteList: View {
     
     var body: some View {
         NavigationSplitView {
+            
             List(shownSatellites) { satellite in
                 NavigationLink {
                     SatelliteDetail(satellite: satellite)
@@ -17,8 +19,16 @@ struct SatelliteList: View {
                 }
             }
             .navigationTitle("Satellites")
+            .overlay {
+                if modelData.isLoading {
+                    ProgressView()
+                }
+            }
         } detail: {
             Text("Select a satellite")
+        }
+        .refreshable {
+            modelData.reloadSatellites()
         }
     }
 }
