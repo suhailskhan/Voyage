@@ -16,8 +16,8 @@ struct SatelliteDetail: View {
                 
                 Spacer()
                 
-                MapView(coordinate: satellite.location.coordinate)
-                    .frame(height: 200)
+                SatelliteAltitudeChart(satellite: satellite)
+                
                 Spacer()
                 
                 HStack {
@@ -26,6 +26,10 @@ struct SatelliteDetail: View {
                     Text("\(satellite.location.speed, specifier: "%.0f") km/h")
                 }
                 
+                Spacer()
+                
+                SatelliteSpeedChart(satellite: satellite)
+
                 Spacer()
                 
                 HStack(alignment: .bottom) {

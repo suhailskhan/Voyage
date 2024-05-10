@@ -13,12 +13,13 @@
 		FD177A5E2B84F5A000FD37A9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD177A5D2B84F5A000FD37A9 /* Preview Assets.xcassets */; };
 		FD4B98E02BE96BBD0030D4A6 /* SGPKit in Frameworks */ = {isa = PBXBuildFile; productRef = FD4B98DF2BE96BBD0030D4A6 /* SGPKit */; };
 		FD9EB7DB2BECD6DB00E10E2B /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = FD9EB7DA2BECD6DB00E10E2B /* data.json */; };
+		FD5221192BEDEB0D008B61BD /* AltitudeChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5221182BEDEB0D008B61BD /* AltitudeChart.swift */; };
+		FD52211C2BEDF29A008B61BD /* SpeedChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD52211B2BEDF29A008B61BD /* SpeedChart.swift */; };
 		FDE74D232BEC11D100A45A71 /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = FDE74D222BEC11D100A45A71 /* BottomSheet */; };
 		FDE74D252BEC331E00A45A71 /* Satellite.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE74D242BEC331E00A45A71 /* Satellite.swift */; };
 		FDE74D272BEC364C00A45A71 /* SatelliteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE74D262BEC364C00A45A71 /* SatelliteList.swift */; };
 		FDE74D292BEC370600A45A71 /* SatelliteRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE74D282BEC370600A45A71 /* SatelliteRow.swift */; };
 		FDE74D2B2BEC384100A45A71 /* SatelliteDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE74D2A2BEC384100A45A71 /* SatelliteDetail.swift */; };
-		FDE74D302BEC40AE00A45A71 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE74D2F2BEC40AE00A45A71 /* MapView.swift */; };
 		FDE74D372BEC60AF00A45A71 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE74D362BEC60AF00A45A71 /* ModelData.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,11 +30,12 @@
 		FD177A5A2B84F5A000FD37A9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FD177A5D2B84F5A000FD37A9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FD9EB7DA2BECD6DB00E10E2B /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
+		FD5221182BEDEB0D008B61BD /* AltitudeChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AltitudeChart.swift; sourceTree = "<group>"; };
+		FD52211B2BEDF29A008B61BD /* SpeedChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedChart.swift; sourceTree = "<group>"; };
 		FDE74D242BEC331E00A45A71 /* Satellite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Satellite.swift; sourceTree = "<group>"; };
 		FDE74D262BEC364C00A45A71 /* SatelliteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SatelliteList.swift; sourceTree = "<group>"; };
 		FDE74D282BEC370600A45A71 /* SatelliteRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SatelliteRow.swift; sourceTree = "<group>"; };
 		FDE74D2A2BEC384100A45A71 /* SatelliteDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SatelliteDetail.swift; sourceTree = "<group>"; };
-		FDE74D2F2BEC40AE00A45A71 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		FDE74D362BEC60AF00A45A71 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -89,18 +91,22 @@
 			sourceTree = "<group>";
 		};
 		FD9EB7DC2BECD6DF00E10E2B /* Resources */ = {
+		FD52211A2BEDF27E008B61BD /* Charts */ = {
 			isa = PBXGroup;
 			children = (
 				FD9EB7DA2BECD6DB00E10E2B /* data.json */,
+				FD5221182BEDEB0D008B61BD /* AltitudeChart.swift */,
+				FD52211B2BEDF29A008B61BD /* SpeedChart.swift */,
 			);
 			path = Resources;
+			path = Charts;
 			sourceTree = "<group>";
 		};
 		FDE74D2C2BEC389800A45A71 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				FDE74D2F2BEC40AE00A45A71 /* MapView.swift */,
 				FDE74D2D2BEC38A000A45A71 /* Satellite */,
+				FD52211A2BEDF27E008B61BD /* Charts */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -203,14 +209,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FDE74D302BEC40AE00A45A71 /* MapView.swift in Sources */,
 				FDE74D272BEC364C00A45A71 /* SatelliteList.swift in Sources */,
 				1F4F1D4D2BD46E48005D3F57 /* VoyageApp.swift in Sources */,
 				FD177A592B84F59C00FD37A9 /* ContentView.swift in Sources */,
+				FD52211C2BEDF29A008B61BD /* SpeedChart.swift in Sources */,
 				FDE74D252BEC331E00A45A71 /* Satellite.swift in Sources */,
 				FDE74D372BEC60AF00A45A71 /* ModelData.swift in Sources */,
 				FDE74D2B2BEC384100A45A71 /* SatelliteDetail.swift in Sources */,
 				FDE74D292BEC370600A45A71 /* SatelliteRow.swift in Sources */,
+				FD5221192BEDEB0D008B61BD /* AltitudeChart.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
