@@ -4,16 +4,16 @@ import SGPKit
 import CoreLocation
 
 struct Satellite: Codable, Identifiable {
-    var id: String
+    var id: Int
     var type: String
-    var satelliteId: Int
+    var url: String
     var name: String
     
-    private var date: String
-    var epochDate: Date {
+    private var dateString: String
+    var date: Date {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        return formatter.date(from: date) ?? Date.distantPast
+        return formatter.date(from: dateString) ?? Date.distantPast
     }
     
     var line1: String
@@ -25,13 +25,13 @@ struct Satellite: Codable, Identifiable {
     
     private var interpreter = TLEInterpreter()
     private var interpretedData: SatelliteData {
-        interpreter.satelliteData(from: tle, date: epochDate)
+        interpreter.satelliteData(from: tle, date: date)
     }
     
     var location: CLLocation {
-        let previousDate = Calendar.current.date(byAdding: .second, value: -10, to: epochDate)!
+        let previousDate = Calendar.current.date(byAdding: .second, value: -10, to: date)!
         let previousLocation = locationAt(date: previousDate)
-        let currentLocation = locationAt(date: epochDate)
+        let currentLocation = locationAt(date: date)
         
         return CLLocation(coordinate: currentLocation.coordinate,
                           altitude: currentLocation.altitude,
@@ -39,7 +39,7 @@ struct Satellite: Codable, Identifiable {
                           verticalAccuracy: 1.0,
                           course: calculateBearing(from: previousLocation.coordinate, to: currentLocation.coordinate),
                           speed: interpretedData.speed,
-                          timestamp: epochDate
+                          timestamp: date
         )
     }
     
@@ -64,7 +64,17 @@ struct Satellite: Codable, Identifiable {
         return (degreesBearing + 360).truncatingRemainder(dividingBy: 360)
     }
     
+    func altitudeAt(time: Date) -> CLLocationDistance {
+        let data = interpreter.satelliteData(from: tle, date: time)
+        return data.altitude
+    }
+    
+    func speedAt(time: Date) -> CLLocationSpeed {
+        let data = interpreter.satelliteData(from: tle, date: time)
+        return data.speed
+    }
+    
     enum CodingKeys: String, CodingKey {
-        case id = "@id", type = "@type", satelliteId, name, date, line1, line2
+        case id = "satelliteId", type = "@type", url = "@id", name, dateString = "date", line1, line2
     }
 }
