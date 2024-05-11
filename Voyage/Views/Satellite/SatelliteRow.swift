@@ -5,7 +5,7 @@ struct SatelliteRow: View {
     
     var body: some View {
         HStack {
-            Image("satellite-icon")
+            Image("satellite")
             Text(satellite.name)
             Spacer()
         }
