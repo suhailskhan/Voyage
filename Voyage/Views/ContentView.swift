@@ -1,4 +1,5 @@
 import SwiftUI
+import BottomSheet
 import MapKit
 
 struct ContentView: View {
@@ -16,7 +17,7 @@ struct ContentView: View {
         )
     )
     @State var showVisibleOnly = false
-    @State private var isPresented = true
+    @State var bottomSheetPosition: BottomSheetPosition = .relative(0.4)
     
     var shownSatellites: [Satellite] {
         if !showVisibleOnly {
@@ -41,18 +42,24 @@ struct ContentView: View {
     
     var body: some View {
         ZStack(alignment: .bottom) {
-            Map(position: $region)
-            {
+            Map(position: $region) {
                 ForEach(shownSatellites) { satellite in
                     Marker(satellite.name, coordinate: satellite.location.coordinate)
                 }
             }
             .mapStyle(.hybrid(elevation: .realistic))
             .edgesIgnoringSafeArea(.all)
-            .sheet(isPresented: $isPresented) {
-                SatelliteList(region: $region, showVisibleOnly: $showVisibleOnly)
-                    .presentationDetents(Set(heights))
-            }
+            .bottomSheet(
+                bottomSheetPosition: $bottomSheetPosition,
+                switchablePositions: [
+                    .relativeBottom(0.125),
+                    .relative(0.4),
+                    .relativeTop(0.975)
+                ],
+                content: {
+                    SatelliteList(region: $region, showVisibleOnly: $showVisibleOnly)
+                }
+            )
             .animation(.default, value: region)
         }
     }
