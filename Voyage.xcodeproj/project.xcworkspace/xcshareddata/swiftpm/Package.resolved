@@ -1,13 +1,13 @@
 {
-  "originHash" : "b69fad9b89fdfe36bccf9d88eacc99c5cab5baeaf2dac25faa5fc78ad75e5426",
+  "originHash" : "00ce1dd2439148b77726105827c7e5c2391d4e8c0cf82d44321cc98765fd7baa",
   "pins" : [
     {
       "identity" : "bottomsheet",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Wouter125/BottomSheet",
+      "location" : "https://github.com/lucaszischka/BottomSheet",
       "state" : {
-        "revision" : "ccc7f6ceb2de1dbb132540f73167182dc2c7ec91",
-        "version" : "2.0.2"
+        "revision" : "720ddbd1371fef2a09cc1ab65fc503df37767f9c",
+        "version" : "3.1.1"
       }
     },
     {

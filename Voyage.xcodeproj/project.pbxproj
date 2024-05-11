@@ -13,7 +13,7 @@
 		FD177A5E2B84F5A000FD37A9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD177A5D2B84F5A000FD37A9 /* Preview Assets.xcassets */; };
 		FD5221192BEDEB0D008B61BD /* AltitudeChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5221182BEDEB0D008B61BD /* AltitudeChart.swift */; };
 		FD52211C2BEDF29A008B61BD /* SpeedChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD52211B2BEDF29A008B61BD /* SpeedChart.swift */; };
-		FDE59FB62BEE9861001BE9A2 /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = FDE59FB52BEE9861001BE9A2 /* BottomSheet */; };
+		FDBE1E7F2BEF90800048F5F5 /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = FDBE1E7E2BEF90800048F5F5 /* BottomSheet */; };
 		FDE59FB92BEE986B001BE9A2 /* SGPKit in Frameworks */ = {isa = PBXBuildFile; productRef = FDE59FB82BEE986B001BE9A2 /* SGPKit */; };
 		FDE74D252BEC331E00A45A71 /* Satellite.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE74D242BEC331E00A45A71 /* Satellite.swift */; };
 		FDE74D272BEC364C00A45A71 /* SatelliteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE74D262BEC364C00A45A71 /* SatelliteList.swift */; };
@@ -43,7 +43,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FDE59FB92BEE986B001BE9A2 /* SGPKit in Frameworks */,
-				FDE59FB62BEE9861001BE9A2 /* BottomSheet in Frameworks */,
+				FDBE1E7F2BEF90800048F5F5 /* BottomSheet in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,8 +141,8 @@
 			);
 			name = Voyage;
 			packageProductDependencies = (
-				FDE59FB52BEE9861001BE9A2 /* BottomSheet */,
 				FDE59FB82BEE986B001BE9A2 /* SGPKit */,
+				FDBE1E7E2BEF90800048F5F5 /* BottomSheet */,
 			);
 			productName = Voyage;
 			productReference = FD177A532B84F59C00FD37A9 /* Voyage.app */;
@@ -173,8 +173,8 @@
 			);
 			mainGroup = FD177A4A2B84F59B00FD37A9;
 			packageReferences = (
-				FDE59FB42BEE9861001BE9A2 /* XCRemoteSwiftPackageReference "BottomSheet" */,
 				FDE59FB72BEE986B001BE9A2 /* XCRemoteSwiftPackageReference "swift-sgp4" */,
+				FDBE1E7D2BEF90800048F5F5 /* XCRemoteSwiftPackageReference "BottomSheet" */,
 			);
 			productRefGroup = FD177A542B84F59C00FD37A9 /* Products */;
 			projectDirPath = "";
@@ -416,12 +416,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		FDE59FB42BEE9861001BE9A2 /* XCRemoteSwiftPackageReference "BottomSheet" */ = {
+		FDBE1E7D2BEF90800048F5F5 /* XCRemoteSwiftPackageReference "BottomSheet" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Wouter125/BottomSheet";
+			repositoryURL = "https://github.com/lucaszischka/BottomSheet";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.2;
+				minimumVersion = 3.1.1;
 			};
 		};
 		FDE59FB72BEE986B001BE9A2 /* XCRemoteSwiftPackageReference "swift-sgp4" */ = {
@@ -435,9 +435,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		FDE59FB52BEE9861001BE9A2 /* BottomSheet */ = {
+		FDBE1E7E2BEF90800048F5F5 /* BottomSheet */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = FDE59FB42BEE9861001BE9A2 /* XCRemoteSwiftPackageReference "BottomSheet" */;
+			package = FDBE1E7D2BEF90800048F5F5 /* XCRemoteSwiftPackageReference "BottomSheet" */;
 			productName = BottomSheet;
 		};
 		FDE59FB82BEE986B001BE9A2 /* SGPKit */ = {
