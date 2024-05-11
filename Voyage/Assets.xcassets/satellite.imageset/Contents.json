@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "icons8-satellite-48.png",
+      "filename" : "icons8-satellite-96 1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -11,7 +11,7 @@
       "scale" : "2x"
     },
     {
-      "filename" : "icons8-satellite-192.png",
+      "filename" : "icons8-satellite-96 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
