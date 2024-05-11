@@ -26,7 +26,7 @@ struct SatelliteList: View {
     }
     
     var body: some View {
-        NavigationSplitView {
+        NavigationView {
             List(shownSatellites) { satellite in
                 NavigationLink {
                     SatelliteDetail(region: $region, satellite: satellite)
@@ -63,9 +63,8 @@ struct SatelliteList: View {
                     ProgressView()
                 }
             }
-        } detail: {
-            Text("Select a satellite")
         }
+        .navigationViewStyle(StackNavigationViewStyle())
         .refreshable {
             modelData.reloadSatellites()
         }
