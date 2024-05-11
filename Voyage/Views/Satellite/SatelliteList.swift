@@ -35,7 +35,7 @@ struct SatelliteList: View {
     }
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List(shownSatellites) { satellite in
                 NavigationLink {
                     SatelliteDetail(region: $region, satellite: satellite)
@@ -58,12 +58,13 @@ struct SatelliteList: View {
             .toolbar {
                 Button {
                     showVisibleOnly.toggle()
-                    return
                 } label: {
                     if showVisibleOnly {
                         Image(systemName: "line.3.horizontal.decrease.circle.fill")
+                            .accessibilityLabel("Filter satellites")
                     } else {
                         Image(systemName: "line.3.horizontal.decrease.circle")
+                            .accessibilityLabel("Stop filtering satellites")
                     }
                 }
             }
@@ -73,7 +74,6 @@ struct SatelliteList: View {
                 }
             }
         }
-        .navigationViewStyle(StackNavigationViewStyle())
         .searchable(text: $searchText)
         .refreshable {
             modelData.reloadSatellites()

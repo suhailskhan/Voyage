@@ -56,7 +56,6 @@ struct SatelliteDetail: View {
                             )
                         )
                     )
-                    return
                 } label: {
                     Text("Jump to location")
                 }
