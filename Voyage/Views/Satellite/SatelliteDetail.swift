@@ -45,19 +45,21 @@ struct SatelliteDetail: View {
             .navigationBarTitleDisplayMode(.large)
         }
         .toolbar {
-            Button {
-                region = MapCameraPosition.region(
-                    MKCoordinateRegion(
-                        center: satellite.location.coordinate,
-                        span: MKCoordinateSpan(
-                            latitudeDelta: 10.0,
-                            longitudeDelta: 10.0
+            if (region.region?.center.latitude != self.satellite.location.coordinate.latitude && region.region?.center.longitude != self.satellite.location.coordinate.longitude) {
+                Button {
+                    region = MapCameraPosition.region(
+                        MKCoordinateRegion(
+                            center: satellite.location.coordinate,
+                            span: MKCoordinateSpan(
+                                latitudeDelta: 10.0,
+                                longitudeDelta: 10.0
+                            )
                         )
                     )
-                )
-                return
-            } label: {
-                Text("Jump to location")
+                    return
+                } label: {
+                    Text("Jump to location")
+                }
             }
         }
     }
