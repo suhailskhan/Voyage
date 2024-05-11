@@ -69,10 +69,9 @@
 		FD177A552B84F59C00FD37A9 /* Voyage */ = {
 			isa = PBXGroup;
 			children = (
-				FDE74D2E2BEC3CA500A45A71 /* Model */,
-				FDE74D2C2BEC389800A45A71 /* Views */,
-				FD177A582B84F59C00FD37A9 /* ContentView.swift */,
 				1F4F1D4C2BD46E48005D3F57 /* VoyageApp.swift */,
+				FDE74D2C2BEC389800A45A71 /* Views */,
+				FDE74D2E2BEC3CA500A45A71 /* Model */,
 				FD177A5A2B84F5A000FD37A9 /* Assets.xcassets */,
 				FD177A5C2B84F5A000FD37A9 /* Preview Content */,
 			);
@@ -99,6 +98,7 @@
 		FDE74D2C2BEC389800A45A71 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FD177A582B84F59C00FD37A9 /* ContentView.swift */,
 				FDE74D2D2BEC38A000A45A71 /* Satellite */,
 				FD52211A2BEDF27E008B61BD /* Charts */,
 			);

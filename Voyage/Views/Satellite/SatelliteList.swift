@@ -1,8 +1,9 @@
 import SwiftUI
+import MapKit
 
 struct SatelliteList: View {
     @Environment(ModelData.self) var modelData
-    @State private var isLoading = false
+    @Binding var region: MapCameraPosition
     
     var shownSatellites: [Satellite] {
         modelData.satellites
@@ -14,6 +15,17 @@ struct SatelliteList: View {
             List(shownSatellites) { satellite in
                 NavigationLink {
                     SatelliteDetail(satellite: satellite)
+                        .onAppear() {
+                            region = MapCameraPosition.region(
+                                MKCoordinateRegion(
+                                    center: satellite.location.coordinate,
+                                    span: MKCoordinateSpan(
+                                        latitudeDelta: 10.0,
+                                        longitudeDelta: 10.0
+                                    )
+                                )
+                            )
+                        }
                 } label: {
                     SatelliteRow(satellite: satellite)
                 }
@@ -33,7 +45,8 @@ struct SatelliteList: View {
     }
 }
 
-#Preview {
-    SatelliteList()
-        .environment(ModelData())
-}
+//#Preview {
+//    SatelliteList(region: $r)
+//        .environment(ModelData())
+//        .environmentObject(MapModel())
+//}

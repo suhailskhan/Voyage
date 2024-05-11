@@ -24,9 +24,10 @@ struct ContentView: View {
                 .mapStyle(.hybrid(elevation: .realistic))
                 .edgesIgnoringSafeArea(.all)
                 .sheet(isPresented: $isPresented) {
-                    SatelliteList()
+                    SatelliteList(region: $region)
                         .presentationDetents(Set(heights))
                 }
+                .animation(.default, value: region)
         }
     }
 }
