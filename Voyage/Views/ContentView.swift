@@ -4,6 +4,7 @@ import MapKit
 
 struct ContentView: View {
     @Environment(ModelData.self) var modelData
+    @State var searchText = ""
     @State var region = MapCameraPosition.region(
         MKCoordinateRegion(
             center: CLLocationCoordinate2D(
@@ -20,8 +21,16 @@ struct ContentView: View {
     @State var bottomSheetPosition: BottomSheetPosition = .relative(0.4)
     
     var shownSatellites: [Satellite] {
+        var searchResults: [Satellite] {
+            if searchText.isEmpty {
+                return modelData.satellites
+            } else {
+                return modelData.satellites.filter { $0.name.contains(searchText) }
+            }
+        }
+        
         if !showVisibleOnly {
-            return modelData.satellites
+            return searchResults
         }
         
         guard let regionCenter = region.region?.center,
@@ -29,7 +38,7 @@ struct ContentView: View {
             return []
         }
         
-        return modelData.satellites.filter { satellite in
+        return searchResults.filter { satellite in
             let latitudeInRange = (regionCenter.latitude - regionSpan.latitudeDelta / 2) <= satellite.location.coordinate.latitude &&
             satellite.location.coordinate.latitude <= (regionCenter.latitude + regionSpan.latitudeDelta / 2)
             let longitudeInRange = (regionCenter.longitude - regionSpan.longitudeDelta / 2) <= satellite.location.coordinate.longitude &&
@@ -57,7 +66,7 @@ struct ContentView: View {
                     .relativeTop(0.975)
                 ],
                 content: {
-                    SatelliteList(region: $region, showVisibleOnly: $showVisibleOnly)
+                    SatelliteList(searchText: $searchText, region: $region, showVisibleOnly: $showVisibleOnly)
                 }
             )
             .animation(.default, value: region)

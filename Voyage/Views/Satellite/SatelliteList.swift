@@ -3,12 +3,21 @@ import MapKit
 
 struct SatelliteList: View {
     @Environment(ModelData.self) var modelData
+    @Binding var searchText: String
     @Binding var region: MapCameraPosition
     @Binding var showVisibleOnly: Bool
     
     var shownSatellites: [Satellite] {
+        var searchResults: [Satellite] {
+            if searchText.isEmpty {
+                return modelData.satellites
+            } else {
+                return modelData.satellites.filter { $0.name.contains(searchText) }
+            }
+        }
+        
         if !showVisibleOnly {
-            return modelData.satellites
+            return searchResults
         }
         
         guard let regionCenter = region.region?.center,
@@ -16,7 +25,7 @@ struct SatelliteList: View {
             return []
         }
         
-        return modelData.satellites.filter { satellite in
+        return searchResults.filter { satellite in
             let latitudeInRange = (regionCenter.latitude - regionSpan.latitudeDelta / 2) <= satellite.location.coordinate.latitude &&
             satellite.location.coordinate.latitude <= (regionCenter.latitude + regionSpan.latitudeDelta / 2)
             let longitudeInRange = (regionCenter.longitude - regionSpan.longitudeDelta / 2) <= satellite.location.coordinate.longitude &&
@@ -65,6 +74,7 @@ struct SatelliteList: View {
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
+        .searchable(text: $searchText)
         .refreshable {
             modelData.reloadSatellites()
         }
@@ -73,6 +83,7 @@ struct SatelliteList: View {
 
 #Preview {
     struct Preview: View {
+        @State var searchText = ""
         @State var region = MapCameraPosition.region(
             MKCoordinateRegion(
                 center: CLLocationCoordinate2D(
@@ -88,7 +99,7 @@ struct SatelliteList: View {
         @State var showVisibleOnly = false
         
         var body: some View {
-            SatelliteList(region: $region, showVisibleOnly: $showVisibleOnly)
+            SatelliteList(searchText: $searchText, region: $region, showVisibleOnly: $showVisibleOnly)
         }
     }
     return Preview()
