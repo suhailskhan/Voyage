@@ -84,7 +84,7 @@ private let itemFormatter: DateFormatter = {
 }()
 
 #Preview {
-    let modelData = ModelData()
+    let modelData = ModelData(dummy: true)
     return SatelliteSpeedChart(satellite: modelData.satellites[0])
         .environment(modelData)
 }

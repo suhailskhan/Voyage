@@ -45,8 +45,8 @@ struct SatelliteDetail: View {
     }
 }
 
-//#Preview {
-//    let modelData = ModelData()
-//    return SatelliteDetail(satellite: modelData.satellites[0])
-//        .environment(modelData)
-//}
+#Preview {
+    let modelData = ModelData(dummy: true)
+    return SatelliteDetail(satellite: modelData.satellites[0])
+        .environment(modelData)
+}

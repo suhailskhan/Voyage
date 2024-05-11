@@ -13,9 +13,11 @@ struct SatelliteRow: View {
 }
 
 #Preview {
-    let satellites = ModelData().satellites
-    return Group {
-        SatelliteRow(satellite: satellites[0])
-        SatelliteRow(satellite: satellites[1])
-    }
+    let satellites = ModelData(dummy: true).satellites
+    return SatelliteRow(satellite: satellites[0])
+}
+
+#Preview {
+    let satellites = ModelData(dummy: true).satellites
+    return SatelliteRow(satellite: satellites[1])
 }

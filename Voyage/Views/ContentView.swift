@@ -34,5 +34,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-        .environment(ModelData())
+        .environment(ModelData(dummy: true))
 }
