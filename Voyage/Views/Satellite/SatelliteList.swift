@@ -29,7 +29,7 @@ struct SatelliteList: View {
         NavigationSplitView {
             List(shownSatellites) { satellite in
                 NavigationLink {
-                    SatelliteDetail(satellite: satellite)
+                    SatelliteDetail(region: $region, satellite: satellite)
                         .onAppear() {
                             region = MapCameraPosition.region(
                                 MKCoordinateRegion(
