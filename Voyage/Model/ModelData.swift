@@ -1,4 +1,5 @@
 import Foundation
+import _MapKit_SwiftUI
 
 struct SatelliteContainer: Decodable {
     let satellites: [Satellite]
@@ -34,6 +35,7 @@ class ModelData {
             switch result {
             case .success(let container):
                 self.satellites = container.satellites
+                print("\(self.satellites[0].location.coordinate)")
             case .failure(let error):
                 print("Failed to load satellites:", error)
             }
@@ -42,6 +44,22 @@ class ModelData {
     
     func reloadSatellites() {
         loadSatellites()
+    }
+    
+    func satellites(in cameraPosition: MapCameraPosition) -> [Satellite] {
+        if let region = cameraPosition.region {
+            return satellites.filter { satellite in
+                let lat = satellite.location.coordinate.latitude
+                let lon = satellite.location.coordinate.longitude
+                let inLatRange = lat >= region.center.latitude - region.span.latitudeDelta / 2 &&
+                lat <= region.center.latitude + region.span.latitudeDelta / 2
+                let inLonRange = lon >= region.center.longitude - region.span.longitudeDelta / 2 &&
+                lon <= region.center.longitude + region.span.longitudeDelta / 2
+                return inLatRange && inLonRange
+            }
+        } else {
+            return []
+        }
     }
 }
 

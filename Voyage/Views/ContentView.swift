@@ -15,10 +15,26 @@ struct ContentView: View {
             )
         )
     )
+    @State var showVisibleOnly = false
     @State private var isPresented = true
     
     var shownSatellites: [Satellite] {
-        modelData.satellites
+        if !showVisibleOnly {
+            return modelData.satellites
+        }
+        
+        guard let regionCenter = region.region?.center,
+              let regionSpan = region.region?.span else {
+            return []
+        }
+        
+        return modelData.satellites.filter { satellite in
+            let latitudeInRange = (regionCenter.latitude - regionSpan.latitudeDelta / 2) <= satellite.location.coordinate.latitude &&
+            satellite.location.coordinate.latitude <= (regionCenter.latitude + regionSpan.latitudeDelta / 2)
+            let longitudeInRange = (regionCenter.longitude - regionSpan.longitudeDelta / 2) <= satellite.location.coordinate.longitude &&
+            satellite.location.coordinate.longitude <= (regionCenter.longitude + regionSpan.longitudeDelta / 2)
+            return latitudeInRange && longitudeInRange
+        }
     }
     
     let heights = Set([0.3, 0.5, 1.0]).map { PresentationDetent.fraction($0) }
@@ -34,7 +50,7 @@ struct ContentView: View {
             .mapStyle(.hybrid(elevation: .realistic))
             .edgesIgnoringSafeArea(.all)
             .sheet(isPresented: $isPresented) {
-                SatelliteList(region: $region)
+                SatelliteList(region: $region, showVisibleOnly: $showVisibleOnly)
                     .presentationDetents(Set(heights))
             }
             .animation(.default, value: region)

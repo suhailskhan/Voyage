@@ -4,9 +4,25 @@ import MapKit
 struct SatelliteList: View {
     @Environment(ModelData.self) var modelData
     @Binding var region: MapCameraPosition
+    @Binding var showVisibleOnly: Bool
     
     var shownSatellites: [Satellite] {
-        modelData.satellites
+        if !showVisibleOnly {
+            return modelData.satellites
+        }
+        
+        guard let regionCenter = region.region?.center,
+              let regionSpan = region.region?.span else {
+            return []
+        }
+        
+        return modelData.satellites.filter { satellite in
+            let latitudeInRange = (regionCenter.latitude - regionSpan.latitudeDelta / 2) <= satellite.location.coordinate.latitude &&
+            satellite.location.coordinate.latitude <= (regionCenter.latitude + regionSpan.latitudeDelta / 2)
+            let longitudeInRange = (regionCenter.longitude - regionSpan.longitudeDelta / 2) <= satellite.location.coordinate.longitude &&
+            satellite.location.coordinate.longitude <= (regionCenter.longitude + regionSpan.longitudeDelta / 2)
+            return latitudeInRange && longitudeInRange
+        }
     }
     
     var body: some View {
@@ -30,6 +46,18 @@ struct SatelliteList: View {
                 }
             }
             .navigationTitle("Satellites")
+            .toolbar {
+                Button {
+                    showVisibleOnly.toggle()
+                    return
+                } label: {
+                    if showVisibleOnly {
+                        Image(systemName: "line.3.horizontal.decrease.circle.fill")
+                    } else {
+                        Image(systemName: "line.3.horizontal.decrease.circle")
+                    }
+                }
+            }
             .overlay {
                 if modelData.isLoading {
                     ProgressView()
@@ -58,9 +86,10 @@ struct SatelliteList: View {
                 )
             )
         )
+        @State var showVisibleOnly = false
         
         var body: some View {
-            SatelliteList(region: $region)
+            SatelliteList(region: $region, showVisibleOnly: $showVisibleOnly)
         }
     }
     return Preview()
