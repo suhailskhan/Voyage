@@ -30,9 +30,6 @@ struct Satellite: Codable, Identifiable {
         return TLE(title: name, firstLine: line1, secondLine: line2)
     }
     private var interpreter = TLEInterpreter()
-    private var interpretedData: SatelliteData {
-        interpreter.satelliteData(from: tle, date: date)
-    }
     
     /// Core Location object created using location and speed data computed with SGPKit.
     var location: CLLocation {
@@ -45,7 +42,7 @@ struct Satellite: Codable, Identifiable {
                           horizontalAccuracy: 1.0,
                           verticalAccuracy: 1.0,
                           course: calculateBearing(from: previousLocation.coordinate, to: currentLocation.coordinate),
-                          speed: interpretedData.speed,
+                          speed: speedAt(time: date),
                           timestamp: date
         )
     }
