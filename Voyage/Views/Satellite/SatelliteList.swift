@@ -5,6 +5,7 @@ struct SatelliteList: View {
     @Environment(ModelData.self) var modelData
     @Binding var searchText: String
     @Binding var region: MapCameraPosition
+    @Binding var userMapDragPosition: MKCoordinateRegion
     @Binding var showVisibleOnly: Bool
     
     var shownSatellites: [Satellite] {
@@ -20,10 +21,8 @@ struct SatelliteList: View {
             return searchResults
         }
         
-        guard let regionCenter = region.region?.center,
-              let regionSpan = region.region?.span else {
-            return []
-        }
+        let regionCenter = userMapDragPosition.center
+        let regionSpan = userMapDragPosition.span
         
         return searchResults.filter { satellite in
             let latitudeInRange = (regionCenter.latitude - regionSpan.latitudeDelta / 2) <= satellite.location.coordinate.latitude &&
@@ -96,10 +95,20 @@ struct SatelliteList: View {
                 )
             )
         )
+        @State var userMapDragPosition = MKCoordinateRegion(
+            center: CLLocationCoordinate2D(
+                latitude: 37.335378,
+                longitude: -121.879942
+            ),
+            span: MKCoordinateSpan(
+                latitudeDelta: 100,
+                longitudeDelta: 100
+            )
+        )
         @State var showVisibleOnly = false
         
         var body: some View {
-            SatelliteList(searchText: $searchText, region: $region, showVisibleOnly: $showVisibleOnly)
+            SatelliteList(searchText: $searchText, region: $region, userMapDragPosition: $userMapDragPosition, showVisibleOnly: $showVisibleOnly)
         }
     }
     return Preview()

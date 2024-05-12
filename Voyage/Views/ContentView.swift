@@ -17,6 +17,16 @@ struct ContentView: View {
             )
         )
     )
+    @State var userMapDragPosition = MKCoordinateRegion(
+        center: CLLocationCoordinate2D(
+            latitude: 37.335378,
+            longitude: -121.879942
+        ),
+        span: MKCoordinateSpan(
+            latitudeDelta: 100,
+            longitudeDelta: 100
+        )
+    )
     @State var showVisibleOnly = false
     @State var bottomSheetPosition: BottomSheetPosition = .relative(0.4)
     
@@ -33,10 +43,8 @@ struct ContentView: View {
             return searchResults
         }
         
-        guard let regionCenter = region.region?.center,
-              let regionSpan = region.region?.span else {
-            return []
-        }
+        let regionCenter = userMapDragPosition.center
+        let regionSpan = userMapDragPosition.span
         
         return searchResults.filter { satellite in
             let latitudeInRange = (regionCenter.latitude - regionSpan.latitudeDelta / 2) <= satellite.location.coordinate.latitude &&
@@ -58,6 +66,9 @@ struct ContentView: View {
             }
             .mapStyle(.hybrid(elevation: .realistic))
             .edgesIgnoringSafeArea(.all)
+            .onMapCameraChange { context in
+                userMapDragPosition = context.region
+            }
             .bottomSheet(
                 bottomSheetPosition: $bottomSheetPosition,
                 switchablePositions: [
@@ -66,7 +77,7 @@ struct ContentView: View {
                     .relativeTop(0.975)
                 ],
                 content: {
-                    SatelliteList(searchText: $searchText, region: $region, showVisibleOnly: $showVisibleOnly)
+                    SatelliteList(searchText: $searchText, region: $region, userMapDragPosition: $userMapDragPosition, showVisibleOnly: $showVisibleOnly)
                 }
             )
             .animation(.default, value: region)
