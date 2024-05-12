@@ -35,7 +35,7 @@ struct ContentView: View {
             if searchText.isEmpty {
                 return modelData.satellites
             } else {
-                return modelData.satellites.filter { $0.name.contains(searchText) }
+                return modelData.satellites.filter { $0.name.localizedCaseInsensitiveContains(searchText) }
             }
         }
         
