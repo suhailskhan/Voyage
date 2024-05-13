@@ -7,18 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1F4F1D4D2BD46E48005D3F57 /* VoyageApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4F1D4C2BD46E48005D3F57 /* VoyageApp.swift */; };
+		FD177A572B84F59C00FD37A9 /* VoyageApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD177A562B84F59C00FD37A9 /* VoyageApp.swift */; };
 		FD177A592B84F59C00FD37A9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD177A582B84F59C00FD37A9 /* ContentView.swift */; };
 		FD177A5B2B84F5A000FD37A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD177A5A2B84F5A000FD37A9 /* Assets.xcassets */; };
 		FD177A5E2B84F5A000FD37A9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD177A5D2B84F5A000FD37A9 /* Preview Assets.xcassets */; };
+		FD2B76BF2BE76E1F0075A46E /* Satellite.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2B76BE2BE76E1F0075A46E /* Satellite.swift */; };
+		FD2B76C22BE76F5A0075A46E /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = FD2B76C12BE76F5A0075A46E /* BottomSheet */; };
+		FD2B76C42BE770F30075A46E /* SatelliteDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2B76C32BE770F30075A46E /* SatelliteDataViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1F4F1D4C2BD46E48005D3F57 /* VoyageApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoyageApp.swift; sourceTree = "<group>"; };
 		FD177A532B84F59C00FD37A9 /* Voyage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Voyage.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD177A562B84F59C00FD37A9 /* VoyageApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoyageApp.swift; sourceTree = "<group>"; };
 		FD177A582B84F59C00FD37A9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FD177A5A2B84F5A000FD37A9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FD177A5D2B84F5A000FD37A9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		FD2B76BE2BE76E1F0075A46E /* Satellite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Satellite.swift; sourceTree = "<group>"; };
+		FD2B76C32BE770F30075A46E /* SatelliteDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SatelliteDataViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +31,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD2B76C22BE76F5A0075A46E /* BottomSheet in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,10 +57,12 @@
 		FD177A552B84F59C00FD37A9 /* Voyage */ = {
 			isa = PBXGroup;
 			children = (
+				FD177A562B84F59C00FD37A9 /* VoyageApp.swift */,
 				FD177A582B84F59C00FD37A9 /* ContentView.swift */,
-				1F4F1D4C2BD46E48005D3F57 /* VoyageApp.swift */,
 				FD177A5A2B84F5A000FD37A9 /* Assets.xcassets */,
 				FD177A5C2B84F5A000FD37A9 /* Preview Content */,
+				FD2B76BE2BE76E1F0075A46E /* Satellite.swift */,
+				FD2B76C32BE770F30075A46E /* SatelliteDataViewModel.swift */,
 			);
 			path = Voyage;
 			sourceTree = "<group>";
@@ -83,6 +91,9 @@
 			dependencies = (
 			);
 			name = Voyage;
+			packageProductDependencies = (
+				FD2B76C12BE76F5A0075A46E /* BottomSheet */,
+			);
 			productName = Voyage;
 			productReference = FD177A532B84F59C00FD37A9 /* Voyage.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +122,9 @@
 				Base,
 			);
 			mainGroup = FD177A4A2B84F59B00FD37A9;
+			packageReferences = (
+				FD2B76C02BE76F5A0075A46E /* XCRemoteSwiftPackageReference "BottomSheet" */,
+			);
 			productRefGroup = FD177A542B84F59C00FD37A9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -137,8 +151,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F4F1D4D2BD46E48005D3F57 /* VoyageApp.swift in Sources */,
+				FD2B76C42BE770F30075A46E /* SatelliteDataViewModel.swift in Sources */,
 				FD177A592B84F59C00FD37A9 /* ContentView.swift in Sources */,
+				FD177A572B84F59C00FD37A9 /* VoyageApp.swift in Sources */,
+				FD2B76BF2BE76E1F0075A46E /* Satellite.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,6 +358,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FD2B76C02BE76F5A0075A46E /* XCRemoteSwiftPackageReference "BottomSheet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Wouter125/BottomSheet";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FD2B76C12BE76F5A0075A46E /* BottomSheet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FD2B76C02BE76F5A0075A46E /* XCRemoteSwiftPackageReference "BottomSheet" */;
+			productName = BottomSheet;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FD177A4B2B84F59B00FD37A9 /* Project object */;
 }
